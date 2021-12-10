@@ -32,7 +32,6 @@ const RegisterPage = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <p>{registerError}</p>
         <div className="form-element">
-          <label htmlFor="name">name:</label>
           <input
             id="name"
             type="text"
@@ -42,7 +41,6 @@ const RegisterPage = () => {
           <p>{errors.name?.message}</p>
         </div>
         <div className="form-element">
-          <label htmlFor="email">Email:</label>
           <input
             id="email"
             type="email"
@@ -53,7 +51,6 @@ const RegisterPage = () => {
         </div>
 
         <div className="form-element">
-          <label htmlFor="password">Password</label>
           <input
             id="password"
             type="password"
@@ -63,7 +60,6 @@ const RegisterPage = () => {
           <p>{errors.password?.message}</p>
         </div>
         <div className="form-element">
-          <label htmlFor="passwordConfirmation">Confirm Password</label>
           <input
             id="passwordConfirmation"
             type="password"

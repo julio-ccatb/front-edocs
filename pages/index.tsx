@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import useSWR from 'swr';
-import styles from '../styles/Home.module.css';
 import { fetcher } from '../utils/fetcher';
 
 export interface User {
@@ -19,7 +18,7 @@ const Home: NextPage = () => {
 
   if (data) return <>Welcome {data.name}!!</>;
 
-  return <div className={styles.container}>Please Log in</div>;
+  return <div>Please Log in</div>;
 };
 
 export default Home;

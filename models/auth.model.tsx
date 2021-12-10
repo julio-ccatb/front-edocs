@@ -1,32 +1,28 @@
-import { object, string, TypeOf } from "zod";
+import { object, string, TypeOf } from 'zod';
 
 export const createUserSchema = object({
   name: string({
-    required_error: "Name is required",
-  }).nonempty({ message: "name Required" }),
+    required_error: 'Name is required',
+  }).nonempty({ message: 'name Required' }),
   password: string({
-    required_error: "Password is required",
+    required_error: 'Password is required',
   })
-    .min(6, "Password too short - shuld be at least 6 characters ")
-    .nonempty({ message: "password Required" }),
+    .min(6, 'Password too short - shuld be at least 6 characters ')
+    .nonempty({ message: 'password Required' }),
   passwordConfirmation: string({
-    required_error: "Password Confirm is required",
-  }).nonempty({ message: "Password Confirmation Required" }),
-  email: string({ required_error: "Email is required" })
-    .email("Not valid email")
-    .nonempty({ message: "email Required" }),
+    required_error: 'Password Confirm is required',
+  }).nonempty({ message: 'Password Confirmation Required' }),
+  email: string({ required_error: 'Email is required' })
+    .email('Not valid email')
+    .nonempty({ message: 'email Required' }),
 }).refine((data) => data.password === data.passwordConfirmation, {
-  message: "Passwords do not match",
-  path: ["passwordConfirmation"],
+  message: 'Passwords do not match',
+  path: ['passwordConfirmation'],
 });
 
 export const createSessionSchema = object({
-  email: string({
-    required_error: "email is required",
-  }).nonempty({ message: "email" }),
-  password: string({
-    required_error: "password is required",
-  }).nonempty({ message: "password" }),
+  email: string().nonempty({ message: 'email is required' }),
+  password: string().nonempty({ message: 'password is required' }),
 });
 
 export type createUserInput = TypeOf<typeof createUserSchema>;
