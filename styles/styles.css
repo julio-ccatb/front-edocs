@@ -23,6 +23,8 @@ body {
   border: 1px solid var(--primaryYellow);
   background-color: var(--darkglass);
   border-radius: 10%;
+  width: 100%;
+  max-width: 300px;
 }
 
 .from-container form {
@@ -39,6 +41,7 @@ body {
 }
 .form-element {
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .form-element input {
@@ -61,11 +64,11 @@ body {
 
 .btn-primary {
   border: none;
-  border-radius: 10%;
+  border-radius: 25px;
   padding: 1rem;
   margin-top: 1rem;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 900;
   text-transform: capitalize;
   background-color: var(--secondaryYellow);
   transition: all 300ms;
