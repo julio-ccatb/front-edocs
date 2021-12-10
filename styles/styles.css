@@ -12,10 +12,13 @@ body {
   background-image: linear-gradient(var(--darkglass), var(--darkglass)),
     url('../public/pexels-brett-sayles-2881229.jpg');
   background-size: cover;
+  height: 100vh;
+}
+#__next {
+  width: 100%;
+  height: 100%;
   display: grid;
   place-items: center;
-
-  height: 100vh;
 }
 
 .from-container {
