@@ -147,11 +147,32 @@ body {
   position: absolute;
   left: 0%;
   top: 0%;
-  height: 100vh;
-  width: 18%;
+  height: 89vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 0;
   color: var(--primaryWhite);
+  transition: all 400ms;
+}
+
+.closed {
+  width: 5%;
+}
+
+.closed * {
+  color: transparent;
+}
+
+.open {
+  width: 18%;
+}
+
+.area-list {
+  padding: 0%;
+  margin: 0%;
+}
+
+.rack-list {
+  list-style: none;
 }

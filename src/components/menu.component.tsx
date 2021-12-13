@@ -15,7 +15,7 @@ const MenuComponent = () => {
       <div className='top-bar'>
         <FontAwesomeIcon
           onClick={handleOpen}
-          className={`bars-button ${isOpen ? 'open' : ''}`}
+          className='bars-button'
           icon={faBars}
         />
         <div className='profile'>
@@ -28,9 +28,9 @@ const MenuComponent = () => {
         </div>
       </div>
 
-      <div className='menu'>
+      <div className={`menu ${isOpen ? 'open' : 'closed'}`}>
         <h2>Devices</h2>
-        <ul>
+        <ul className='area-list'>
           <li className='rack-list'>
             Reack #<li className='device-item'>Device 1</li>
             <li className='device-item'>Device 2</li>
