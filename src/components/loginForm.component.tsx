@@ -1,12 +1,17 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod/dist/zod';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { createSessionInput, createSessionSchema } from '../models/auth.model';
 import { createSessionService } from '../services/auth.service';
 import { config } from '../conf';
+import { useAuth } from '../hooks/auth.hook';
+import AuthContext from '../context/auth.provider';
+import { useNavigate } from 'react-router';
 
 const LogInForm = () => {
   const [loginError, setloginError] = useState('');
+  const { setTokens } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -18,8 +23,10 @@ const LogInForm = () => {
 
   const onSubmit = async (values: createSessionInput) => {
     try {
-      await createSessionService(values);
-      console.log(`${config.NEXT_PUBLIC_SERVER_ENDPOINT}/api/sessions`);
+      const response = await createSessionService(values);
+
+      setTokens(response);
+      navigate('/dashboard');
     } catch (err: any) {
       setloginError(err.message || 'unexpected problem');
       console.log(err);
@@ -27,7 +34,7 @@ const LogInForm = () => {
   };
 
   return (
-    <div className='w-2/5 h-2/5 bg-slate-100 max-w-md flex justify-center  p-9 rounded-xl shadow-lg'>
+    <div className='w-2/5  bg-slate-100 max-w-md  flex justify-center  p-9 rounded-xl shadow-lg'>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className='text-4xl text-center font-bold font-mono pb-9'>
           E-DOCS
