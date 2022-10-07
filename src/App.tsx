@@ -8,10 +8,8 @@ function App() {
     <>
       <Router>
         <AuthProvider>
-          <div className='bg-gradient-to-tr from-gray-300 to-sky-200 h-screen grid place-items-center'>
-            {/* <MenuComponent /> */}
-            <Routes />
-          </div>
+          {/* <MenuComponent /> */}
+          <Routes />
         </AuthProvider>
       </Router>
     </>

@@ -7,12 +7,15 @@ export const useAxiosPrivate = () => {
   const { credentials, setTokens } = useContext(AuthContext);
 
   useEffect(() => {
+    console.log('Inside');
     const requestIntercept = axiosPrivate.interceptors.request.use(
       (config: AxiosRequestConfig) => {
-        if (config.headers === undefined) {
-          config.headers = {};
-          config.headers.Authorization = `Bearer ${credentials.accessToken}`;
-          config.headers['x-refresh'] = `${credentials.refreshToken}`;
+        if (!config.headers!.Authorization) {
+          config.headers = {
+            Authorization: `Bearer ${credentials.accessToken}`,
+            'x-refresh': `${credentials.refreshToken}`,
+          };
+          console.log('Headers Set');
         }
         return config;
       },
@@ -28,6 +31,7 @@ export const useAxiosPrivate = () => {
           prevRequest.headers[
             'Authorization'
           ] = `Bearer ${credentials.refreshToken}`;
+          console.log('resend request');
           return axiosPrivate(prevRequest);
         }
         return Promise.reject(error);

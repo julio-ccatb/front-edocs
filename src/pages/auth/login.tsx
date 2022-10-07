@@ -3,7 +3,9 @@ import LogInForm from '../../components/loginForm.component';
 const LogInPage = () => {
   return (
     <>
-      <LogInForm />
+      <div className='h-screen grid place-items-center'>
+        <LogInForm />
+      </div>
     </>
   );
 };

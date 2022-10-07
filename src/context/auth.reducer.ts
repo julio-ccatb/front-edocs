@@ -1,5 +1,4 @@
 import { ITokens } from '../interfaces/interfaces';
-import { createSessionInput } from '../models/auth.model';
 
 type AuthAction =
   | {
