@@ -1,55 +1,73 @@
-import profile_pic from '../public/pexels-brett-sayles-2881229.jpg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import {
+  ButtonHTMLAttributes,
+  EventHandler,
+  MouseEvent,
+  MouseEventHandler,
+  useState,
+} from 'react';
+import { OptionComponent } from './utils/options.components';
+
+interface IOptions {
+  opt: number;
+  name: string;
+  active: boolean;
+}
 
 const MenuComponent = () => {
-  const [isOpen, setisOpen] = useState(false);
+  const [options, setoptions] = useState([
+    {
+      opt: 1,
+      name: 'User Management',
+      active: false,
+    },
+    {
+      opt: 2,
+      name: 'Moodle Center',
+      active: false,
+    },
+    {
+      opt: 3,
+      name: 'PfSense Center',
+      active: false,
+    },
+    {
+      opt: 4,
+      name: 'MyOn Center',
+      active: false,
+    },
+  ] as IOptions[]);
 
-  const handleOpen = () => {
-    setisOpen(!isOpen);
+  const setOptionActive = (e: any) => {
+    const opt = e.target!.id;
+    var newOptionsState = options.map((option) => {
+      if (option.active) {
+        return { opt: option.opt, name: option.name, active: false };
+      }
+      if (option.opt == opt) {
+        return { opt, name: option.name, active: true } as IOptions;
+      }
+
+      return option;
+    });
+    console.log(newOptionsState);
+    setoptions(newOptionsState);
   };
 
   return (
-    <>
-      <div className='top-bar'>
-        <FontAwesomeIcon
-          onClick={handleOpen}
-          className='bars-button'
-          icon={faBars}
-        />
-        <div className='profile'>
-          <div className='profile-info'>
-            <h3 className='name'>Test NAME</h3>
-            <h5 className='permisson'>Administrator</h5>
-          </div>
-
-          <img className='profile-img' src={profile_pic} alt='profile-img' />
-        </div>
-      </div>
-
-      <div className={`menu ${isOpen ? 'open' : 'closed'}`}>
-        <h2>Devices</h2>
-        <ul className='area-list'>
-          <li className='rack-list'>
-            Reack #<li className='device-item'>Device 1</li>
-            <li className='device-item'>Device 2</li>
-          </li>
-          <li className='rack-list'>
-            Reack #<li className='device-item'>Device 1</li>
-            <li className='device-item'>Device 2</li>
-          </li>
-          <li className='rack-list'>
-            Reack #<li className='device-item'>Device 1</li>
-            <li className='device-item'>Device 2</li>
-          </li>
-          <li className='rack-list'>
-            Reack #<li className='device-item'>Device 1</li>
-            <li className='device-item'>Device 2</li>
-          </li>
-        </ul>
-      </div>
-    </>
+    <div className='flex flex-col w-max p-2 pl-4 rounded-md bg-slate-200'>
+      <h2 className='text-2xl font-semibold'>Menu</h2>
+      <ul className='text-md space-y-1.5 p-2'>
+        {options.map((option) => (
+          <OptionComponent
+            key={option.opt}
+            id={option.opt}
+            text={option.name}
+            active={option.active}
+            function={(e) => setOptionActive(e)}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
 

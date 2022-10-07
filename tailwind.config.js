@@ -6,7 +6,7 @@ module.exports = {
       sm: '480px',
       md: '768px',
       lg: '976px',
-      md: '1440px',
+      xl: '1440px',
     },
     extend: {
       animation: {},
