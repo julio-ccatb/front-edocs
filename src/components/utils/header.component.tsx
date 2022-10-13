@@ -9,13 +9,14 @@ export const HeaderComponent = (props: { user: UserT }) => {
         E-DOCS
       </h1>
 
-      <div className='flex space-x-4 p-2'>
-        <div className='flex  px-6 py-2 rounded-full bg-slate-200 flex-col text-right hover:text-neutral-600 hover:cursor-pointer'>
-          <a className='font-bold text-md'>{user.name}</a>
-          <p className='font-bold text-sm'>{user.lastname}</p>
-        </div>
-        <div className='h-16 w-16 rounded-full bg-red-500 m-auto'></div>
-      </div>
+      <span className='mr-4 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center cursor-pointer active:bg-gray-300 transition duration-300 ease w-max'>
+        <span className='flex items-center px-3 py-2'>{user.name}</span>
+        <img
+          className='rounded-full w-9 h-9 max-w-none'
+          alt={`${user.name}`}
+          src='https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg'
+        />
+      </span>
     </nav>
   );
 };

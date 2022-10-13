@@ -23,11 +23,11 @@ export const Dashboard = () => {
   return (
     <div className='overflow-hidden'>
       <HeaderComponent user={user} />
-      <section className='m-6 p-6 rounded-md   max-w-sm  justify-between bg-slate-100 sm:flex-row'>
+      <section className='m-6 p-6 rounded-md  flex flex-col justify-between bg-slate-100 sm:grid sm:grid-cols-6 sm:gap-4 '>
         <MenuComponent />
-        <div className='rounded-md h-full grow  '>
-          <div className='overflow-x-auto rounded-md max-w-sm'>
-            <table className='w-full text-sm text-left text-slate-500 '>
+        <div className='rounded-md w-full h-full sm:col-span-5 '>
+          <div className='overflow-x-auto rounded-md'>
+            <table className='text-sm text-left text-slate-500 w-full'>
               <thead className='text-xs text-gray-700 uppercase bg-slate-200'>
                 <tr>
                   <th scope='col' className='py-3 px-6'>

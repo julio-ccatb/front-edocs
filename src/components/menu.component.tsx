@@ -55,15 +55,13 @@ const MenuComponent = () => {
   };
 
   return (
-    <div className='flex flex-col  mb-2 p-2 pl-4 rounded-md bg-slate-200'>
+    <div className='flex max-w-xs flex-col  mb-2 p-2 pl-4 rounded-md bg-slate-200'>
       <img
         onClick={() => toggeMenu()}
         src={MenuIcon}
         className='h-6 w-6 self-end md:hidden'
       />
-      <h2 className='hidden text-2xl text-right font-semibold md:block '>
-        Menu
-      </h2>
+      <h2 className='hidden text-2xl font-semibold md:block'>Menu</h2>
       <ul
         className={`${isOpen ? '' : 'hidden'} text-md space-y-1.5 p-2 md:block`}
       >
