@@ -1,12 +1,6 @@
-import {
-  ButtonHTMLAttributes,
-  EventHandler,
-  MouseEvent,
-  MouseEventHandler,
-  useState,
-} from 'react';
+import { useState } from 'react';
 import { OptionComponent } from './utils/options.components';
-
+import MenuIcon from '../public/menu-symbol-of-three-parallel-lines-svgrepo-com.svg';
 interface IOptions {
   opt: number;
   name: string;
@@ -37,6 +31,12 @@ const MenuComponent = () => {
     },
   ] as IOptions[]);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggeMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   const setOptionActive = (e: any) => {
     const opt = e.target!.id;
     var newOptionsState = options.map((option) => {
@@ -51,12 +51,22 @@ const MenuComponent = () => {
     });
     console.log(newOptionsState);
     setoptions(newOptionsState);
+    setIsOpen(false);
   };
 
   return (
-    <div className='flex flex-col w-max p-2 pl-4 rounded-md bg-slate-200'>
-      <h2 className='text-2xl font-semibold'>Menu</h2>
-      <ul className='text-md space-y-1.5 p-2'>
+    <div className='flex flex-col  mb-2 p-2 pl-4 rounded-md bg-slate-200'>
+      <img
+        onClick={() => toggeMenu()}
+        src={MenuIcon}
+        className='h-6 w-6 self-end md:hidden'
+      />
+      <h2 className='hidden text-2xl text-right font-semibold md:block '>
+        Menu
+      </h2>
+      <ul
+        className={`${isOpen ? '' : 'hidden'} text-md space-y-1.5 p-2 md:block`}
+      >
         {options.map((option) => (
           <OptionComponent
             key={option.opt}
