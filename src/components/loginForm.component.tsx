@@ -3,8 +3,6 @@ import { zodResolver } from '@hookform/resolvers/zod/dist/zod';
 import { useState, useContext } from 'react';
 import { createSessionInput, createSessionSchema } from '../models/auth.model';
 import { createSessionService } from '../services/auth.service';
-import { config } from '../conf';
-import { useAuth } from '../hooks/auth.hook';
 import AuthContext from '../context/auth.provider';
 import { useNavigate } from 'react-router';
 

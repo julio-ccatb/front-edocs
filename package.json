@@ -21,6 +21,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.21.2",
+    "react-query": "^3.39.2",
     "react-router": "^6.1.1",
     "react-router-dom": "^6.1.1",
     "swr": "^1.1.1",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-common-types": "^0.2.36",
+    "@tanstack/react-query": "^4.12.0",
     "@types/axios": "^0.14.0",
     "@types/node": "^16.11.12",
     "@types/react": "^17.0.33",

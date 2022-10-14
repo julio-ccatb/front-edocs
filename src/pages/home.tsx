@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import { useQuery } from 'react-query';
 import MenuComponent from '../components/menu.component';
 import { HeaderComponent } from '../components/utils/header.component';
 import { OptionComponent } from '../components/utils/options.components';
@@ -20,6 +21,15 @@ export const Dashboard = () => {
     });
   }, []);
 
+  const axiosPrivate = useAxiosPrivate();
+
+  const { data } = useQuery(['users'], async () => {
+    const res = await axiosPrivate.get('/users');
+    console.log(res);
+    return res;
+  });
+
+  if (data) return <div>Data</div>;
   return (
     <div className='overflow-hidden'>
       <HeaderComponent user={user} />

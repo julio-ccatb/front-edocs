@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { OptionComponent } from './utils/options.components';
 import MenuIcon from '../public/menu-symbol-of-three-parallel-lines-svgrepo-com.svg';
+import { useQuery } from 'react-query';
+import { useAxiosPrivate } from '../hooks/useAxiosPrivate.hook';
 interface IOptions {
   opt: number;
   name: string;
