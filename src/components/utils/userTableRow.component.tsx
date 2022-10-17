@@ -1,19 +1,26 @@
+import { useUserList } from '../../hooks/users.hook';
 import { UserT } from '../../models/user.model';
 import MoodleLogo from '../../public/Moodle-logo.svg';
 import PfLogo from '../../public/PfSense_logo.svg';
 
 export const UserTableRow = (props: { user: UserT }) => {
   const { user } = props;
+  const { addUser } = useUserList();
+
+  const selectUser = () => {
+    if (user._id) addUser(user._id);
+  };
+
   return (
-    <tr className='bg-white border-b'>
+    <tr className='bg-white border-b' id={user._id} onClick={selectUser}>
       <th
         scope='row'
         className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap '
       >
         {user.username}
       </th>
-      <td className='py-3 px-6'>{user.name}</td>
-      <td className='py-3 px-6'>{user.lastname}</td>
+      <td className='py-3 px-6 capitalize'>{user.name}</td>
+      <td className='py-3 px-6 capitalize'>{user.lastname}</td>
       <td className='py-3 px-6'>{user.email}</td>
       <td className='py-3 px-6'>
         {user.platforms?.moodle ? (

@@ -1,4 +1,5 @@
 export type UserT = {
+  _id?: string;
   username: string;
   name: string;
   lastname: string;

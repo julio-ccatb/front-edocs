@@ -2,11 +2,12 @@ import { useContext, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import MenuComponent from '../components/menu.component';
 import { HeaderComponent } from '../components/utils/header.component';
-import { OptionComponent } from '../components/utils/options.components';
+import { UserTable } from '../components/utils/userTable.component';
 import { UserTableRow } from '../components/utils/userTableRow.component';
 import { AuthContext } from '../context/auth.context';
 import { useAxiosPrivate } from '../hooks/useAxiosPrivate.hook';
 import { UserT } from '../models/user.model';
+import { getUsersService } from '../services/users.service';
 
 export const Dashboard = () => {
   const AxiosPrivate = useAxiosPrivate();
@@ -23,13 +24,19 @@ export const Dashboard = () => {
 
   const axiosPrivate = useAxiosPrivate();
 
-  const { data } = useQuery(['users'], async () => {
-    const res = await axiosPrivate.get('/users');
-    console.log(res);
-    return res;
+  const {
+    data: users,
+    isLoading,
+    isError,
+  } = useQuery(['users'], async () => {
+    const res = await getUsersService(AxiosPrivate);
+    // console.log(res);
+    return res as UserT[];
   });
 
-  if (data) return <div>Data</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (isError || !users) return <div>No Data...</div>;
+
   return (
     <div className='overflow-hidden'>
       <HeaderComponent user={user} />
@@ -37,33 +44,7 @@ export const Dashboard = () => {
         <MenuComponent />
         <div className='rounded-md w-full h-full sm:col-span-5 '>
           <div className='overflow-x-auto rounded-md'>
-            <table className='text-sm text-left text-slate-500 w-full'>
-              <thead className='text-xs text-gray-700 uppercase bg-slate-200'>
-                <tr>
-                  <th scope='col' className='py-3 px-6'>
-                    ID
-                  </th>
-                  <th scope='col' className='py-3 px-6'>
-                    Name
-                  </th>
-                  <th scope='col' className='py-3 px-6'>
-                    Lastname
-                  </th>
-                  <th scope='col' className='py-3 px-6'>
-                    Email
-                  </th>
-                  <th scope='col' className='py-3 px-6'>
-                    platforms
-                  </th>
-                  <th scope='col' className='py-3 px-6'>
-                    Selected
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <UserTableRow user={user} />
-              </tbody>
-            </table>
+            <UserTable users={users} />
           </div>
         </div>
       </section>
