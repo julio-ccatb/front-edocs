@@ -24,7 +24,7 @@ const LogInForm = () => {
       const response = await createSessionService(values);
 
       setTokens(response);
-      navigate('/dashboard');
+      navigate('/home');
     } catch (err: any) {
       setloginError(err.message || 'unexpected problem');
       console.log(err);

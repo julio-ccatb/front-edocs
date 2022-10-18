@@ -1,7 +1,18 @@
 import { UserT } from '../../models/user.model';
+import { useEffect, useContext } from 'react';
+import { useAxiosPrivate } from '../../hooks/useAxiosPrivate.hook';
+import AuthContext from '../../context/auth.provider';
 
-export const HeaderComponent = (props: { user: UserT }) => {
-  const { user } = props;
+export const HeaderComponent = () => {
+  const AxiosPrivate = useAxiosPrivate();
+  const { user, setUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    AxiosPrivate.get('/api/users/me').then(({ data }) => {
+      const user: UserT = data;
+      setUser(user);
+    });
+  }, []);
 
   return (
     <nav className='flex items-center justify-between bg-slate-100'>

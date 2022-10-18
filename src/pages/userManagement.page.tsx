@@ -3,18 +3,16 @@ import { useQuery } from 'react-query';
 import MenuComponent from '../components/menu.component';
 import { HeaderComponent } from '../components/utils/header.component';
 import { UserTable } from '../components/utils/userTable.component';
-import { UserTableRow } from '../components/utils/userTableRow.component';
 import { AuthContext } from '../context/auth.context';
 import { useAxiosPrivate } from '../hooks/useAxiosPrivate.hook';
 import { UserT } from '../models/user.model';
 import { getUsersService } from '../services/users.service';
 
-export const Dashboard = () => {
+export const UserManagmentDashBoard = () => {
   const AxiosPrivate = useAxiosPrivate();
 
   const { user, setUser } = useContext(AuthContext);
 
-  const getMe = async () => {};
   useEffect(() => {
     AxiosPrivate.get('/api/users/me').then(({ data }) => {
       const user: UserT = data;
