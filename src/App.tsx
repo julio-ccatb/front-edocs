@@ -1,21 +1,27 @@
 import { BrowserRouter as Router } from 'react-router-dom';
-import MenuComponent from './components/menu.component';
-import { AuthProvider } from './context/auth.provider';
 import Routes from './routes';
-import { QueryClientProvider, QueryClient } from 'react-query';
-
-const _QueryClient = new QueryClient();
+import SideBarComponent from './components/SideBar.component';
+import { useContext } from 'react';
+import AuthContext from './context/auth.provider';
+import LogInPage from './pages/auth/login';
 
 function App() {
+  // const navigate = useNavigate();
+
+  const { credentials } = useContext(AuthContext);
+  if (credentials.accessToken === '' && credentials.refreshToken == '')
+    return (
+      <Router>
+        <LogInPage />
+      </Router>
+    );
+
   return (
     <>
       <Router>
-        <QueryClientProvider client={_QueryClient}>
-          <AuthProvider>
-            {/* <MenuComponent /> */}
-            <Routes />
-          </AuthProvider>
-        </QueryClientProvider>
+        <SideBarComponent />
+        {/* <MenuComponent /> */}
+        <Routes />
       </Router>
     </>
   );

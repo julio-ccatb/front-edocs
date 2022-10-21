@@ -8,7 +8,7 @@ const RouteList = () => {
     <Routes>
       <Route path='/auth/login' element={<LogInPage />} />
       <Route path='/home' element={<HomeDashboardComponent />} />
-      <Route path='/dashboard/users' element={<UserManagmentDashBoard />} />
+      <Route path='/accounts' element={<UserManagmentDashBoard />} />
       {/* <Route path='/auth/register' element={<RegisterPage />} /> */}
       <Route element={<div>NotFound</div>} />
     </Routes>
