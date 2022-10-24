@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
-import { useUserList } from '../../hooks/users.hook';
 import { UserT } from '../../models/user.model';
 import { UserTableRow } from './userTableRow.component';
 
-export const UserTable = (props: { users: UserT[] }) => {
-  const { userList, addUser, deleteUser } = useUserList();
+export const UserTable = (props: {
+  users: UserT[];
+  userList: string[];
+  addUser: (user_id: string) => void;
+  deleteUser: (user_id: string) => void;
+}) => {
+  const { users, userList, addUser, deleteUser } = props;
 
   useEffect(() => console.log(userList), [userList]);
 
@@ -26,9 +30,6 @@ export const UserTable = (props: { users: UserT[] }) => {
           </th>
           <th scope='col' className='py-3 px-6'>
             platforms
-          </th>
-          <th scope='col' className='py-3 px-6'>
-            Selected
           </th>
         </tr>
       </thead>

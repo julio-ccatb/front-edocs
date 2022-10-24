@@ -58,7 +58,7 @@ const SideBarComponent = () => {
 
   const { credentials } = useContext(AuthContext);
 
-  console.log(credentials);
+  // console.log(credentials);
   const setOptionActive = (e: any) => {
     const opt = e.target!.id;
 

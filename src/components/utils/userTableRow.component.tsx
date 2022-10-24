@@ -21,7 +21,11 @@ export const UserTableRow = (props: {
   }, [selected]);
 
   return (
-    <tr className='bg-white border-b' id={user._id}>
+    <tr
+      onDoubleClick={toggleSelected}
+      className='bg-white border-b cursor-pointer'
+      id={user._id}
+    >
       <th
         scope='row'
         className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap '
@@ -46,17 +50,6 @@ export const UserTableRow = (props: {
         ) : (
           <></>
         )}
-      </td>
-      <td className='py-3 px-6'>
-        <div className='align-middle justify-center text-center'>
-          <input
-            type='checkbox'
-            name=''
-            id=''
-            defaultChecked={selected}
-            onChange={toggleSelected}
-          />
-        </div>
       </td>
     </tr>
   );
