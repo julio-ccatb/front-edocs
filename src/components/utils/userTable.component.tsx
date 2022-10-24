@@ -34,7 +34,7 @@ export const UserTable = (props: {
         </tr>
       </thead>
       <tbody>
-        {props.users.map((_user) => {
+        {users.map((_user) => {
           return (
             <UserTableRow
               user={_user}
