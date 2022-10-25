@@ -20,21 +20,16 @@ export const UserManagmentDashBoard = () => {
   const navigate = useNavigate();
   const { userList, addUser, deleteUser } = useUserList();
 
-  console.log(page);
   useEffect(() => {
     AxiosPrivate.get('/api/users/me').then(({ data }) => {
       const user: UserT = data;
       setUser(user);
+      SetTotalPage(totalPage);
     });
-    SetTotalPage(totalPage);
   }, []);
 
   useEffect(() => setPage(0), [query]);
   useEffect(() => {
-    if (page >= totalPage || page < 0) {
-      setPage(totalPage - 1);
-      return;
-    }
     let _copyuser = searchUser();
     let _page = paginate(_copyuser, 10, page);
     if (!_page) return;

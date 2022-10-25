@@ -23,7 +23,7 @@ export const UserTableRow = (props: {
   return (
     <tr
       onDoubleClick={toggleSelected}
-      className='bg-white border-b cursor-pointer'
+      className='bg-white border-b cursor-pointer hover:bg-indigo-100'
       id={user._id}
     >
       <th
