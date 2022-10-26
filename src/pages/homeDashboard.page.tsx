@@ -2,7 +2,6 @@ import { HeaderComponent } from '../components/utils/header.component';
 import moodleSVG from '../public/Moodle-logo.svg';
 import pfSenseSVG from '../public/PfSense_logo.svg';
 import { useNavigate } from 'react-router';
-import SideMenuComponent from '../components/utils/sideMenu.component';
 
 const HomeDashboardComponent = () => {
   const navigate = useNavigate();
@@ -10,7 +9,6 @@ const HomeDashboardComponent = () => {
   return (
     <div className='overflow-hidden'>
       <HeaderComponent />
-      <SideMenuComponent />
       <section className='m-6 p-6 rounded-md justify-between bg-slate-100 flex flex-col'>
         <h2 className='font-semibold text-center text-2xl text-slate-700 capitalize mb-5 align-middle'>
           Platforms
