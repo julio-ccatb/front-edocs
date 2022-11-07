@@ -9,6 +9,8 @@ const RouteList = () => {
     <Routes>
       <Route path='/user/auth/login' element={<LogInPage />} />
       <Route path='/home' element={<HomeDashboardComponent />} />
+
+      {/* Admin pages */}
       <Route path='/accounts' element={<UserManagmentDashBoard />} />
       <Route path='/user/auth/create' element={<CreateUserPage />} />
       <Route element={<div>NotFound</div>} />

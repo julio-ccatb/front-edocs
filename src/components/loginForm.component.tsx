@@ -5,10 +5,12 @@ import { createSessionInput, createSessionSchema } from '../models/auth.model';
 import { createSessionService } from '../services/auth.service';
 import AuthContext from '../context/auth.provider';
 import { useNavigate } from 'react-router';
+import { useAxiosPrivate } from '../hooks/useAxiosPrivate.hook';
 
 const LogInForm = () => {
   const [loginError, setloginError] = useState('');
   const { setTokens } = useContext(AuthContext);
+  const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
 
   const {
@@ -23,6 +25,7 @@ const LogInForm = () => {
     try {
       const response = await createSessionService(values);
 
+      // console.log(values);
       setTokens(response);
       navigate('/home');
     } catch (err: any) {
@@ -49,7 +52,7 @@ const LogInForm = () => {
             type='email'
             placeholder='Email'
             {...register('email')}
-          ></input>
+          />
           {errors.email?.message ? (
             <p className='font-mono font-normal text-red-500'>{`💥${errors.email?.message}`}</p>
           ) : (
@@ -68,12 +71,14 @@ const LogInForm = () => {
             type='password'
             placeholder='Password'
             {...register('password')}
-          ></input>
+          />
           {errors.password?.message ? (
             <p className='font-mono font-normal text-red-500'>{`💥${errors.password?.message}`}</p>
           ) : (
             <></>
           )}
+
+          <input type='checkbox' id='persist' {...register('persist')} />
         </div>
 
         <button

@@ -1,4 +1,4 @@
-import { object, string, TypeOf } from 'zod';
+import { boolean, object, string, TypeOf } from 'zod';
 
 export const createUserSchema = object({
   name: string({
@@ -23,6 +23,7 @@ export const createUserSchema = object({
 export const createSessionSchema = object({
   email: string().nonempty({ message: 'email is required' }),
   password: string().nonempty({ message: 'password is required' }),
+  persist: boolean().optional(),
 });
 
 export type createUserInput = TypeOf<typeof createUserSchema>;

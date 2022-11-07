@@ -1,10 +1,10 @@
 import { AxiosRequestConfig } from 'axios';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import axiosPrivate from '../api/CustomAxios';
-import { AuthContext } from '../context/auth.context';
+import { useAuth } from './auth.hook';
 
 export const useAxiosPrivate = () => {
-  const { credentials, setTokens } = useContext(AuthContext);
+  const { credentials, setTokens } = useAuth();
 
   useEffect(() => {
     // console.log('Inside');
