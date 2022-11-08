@@ -1,4 +1,3 @@
-import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './routes';
 import SideBarComponent from './components/SideBar.component';
 import { useContext } from 'react';
@@ -10,19 +9,12 @@ function App() {
 
   const { credentials } = useContext(AuthContext);
   if (credentials.accessToken === '' && credentials.refreshToken == '')
-    return (
-      <Router>
-        <LogInPage />
-      </Router>
-    );
+    return <LogInPage />;
 
   return (
     <>
-      <Router>
-        <SideBarComponent />
-        {/* <MenuComponent /> */}
-        <Routes />
-      </Router>
+      {/* <MenuComponent /> */}
+      <Routes />
     </>
   );
 }

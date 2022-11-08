@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router';
+import { Outlet, useNavigate } from 'react-router';
 import { AuthContext } from '../context/auth.context';
 import {
   DashboardIcon,
@@ -13,6 +13,7 @@ import {
   logoIcon,
   controlIcon,
 } from '../hooks/customIcon';
+import { IProps } from '../interfaces/interfaces';
 
 interface IOptions {
   id: number;
@@ -28,6 +29,7 @@ const SideBarComponent = () => {
       id: 101,
       active: false,
       title: 'Dashboard',
+      goto: 'home',
       src: DashboardIcon,
       gap: false,
     },
@@ -36,7 +38,7 @@ const SideBarComponent = () => {
       id: 103,
       active: false,
       title: 'Accounts',
-      goto: '/accounts',
+      goto: 'accounts',
       src: UserIcon,
       gap: true,
     },

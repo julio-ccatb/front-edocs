@@ -2,6 +2,7 @@ import { HeaderComponent } from '../components/utils/header.component';
 import moodleSVG from '../public/Moodle-logo.svg';
 import pfSenseSVG from '../public/PfSense_logo.svg';
 import { useNavigate } from 'react-router';
+import SideBarComponent from '../components/SideBar.component';
 
 const HomeDashboardComponent = () => {
   const navigate = useNavigate();
